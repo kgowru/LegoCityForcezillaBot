@@ -77,7 +77,8 @@ app.get('/', function(req, res) {
 });
 
 app.post('/sendMessageFromSalesforce', function(req, res) {
-  
+  sendCreateCaseRequest('1656023644463607');
+  res.status(200).send('success');
 });
 
 // Message processing
@@ -184,7 +185,7 @@ function receivedPostback(event) {
   if(payload){
     switch(payload) { 
       case 'Payload for No': 
-        sendTextMessage(senderID, payload);
+        sendTextMessage(senderID, 'Okay, we hope you and your apartment is safe. Let us know if any problems arise!');
         break;
       case 'Payload for Yes':
         createClaimInSalesforce(senderID);
